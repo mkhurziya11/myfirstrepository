@@ -3,7 +3,7 @@ k = input("Input a key: ").upper()
 
 alph = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
-KeyStream = []
+keyStream = []
 encodedPhrase = []
 
 def keyStreamCreator(k, pt):
@@ -20,5 +20,19 @@ def keyStreamCreator(k, pt):
 	print(keyStream)
 
 keyStreamCreator(k, pt)
+
+def vigenereCypher(ks, pt):
+	for i in range(len(pt)):
+		x = alph.index(pt[i])
+		y = alph.index(ks[i])
+		z = x + y
+		
+		if z > 25:
+			z-=len(alph)
+			
+		encodedPhrase.append(alph[z])
+	print(encodedPhrase)
+
+vigenereCypher(keyStream,pt)
 
 
